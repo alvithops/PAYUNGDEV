@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game - PAYUNGDEV</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/umbrella.png">
+</head>
+
+<body>
+    <div class="container game-container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-umbrella"></i>
+                <span>PAYUNG<span class="dev">DEV</span></span>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="biodata.html">Biodata</a>
+                <a href="game.html" class="active">Game</a>
+                <a href="https://github.com/alvithops" target="_blank">GitHub</a>
+            </nav>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="game-header animated-card">
+                <h1><i class="fas fa-gamepad"></i> Tebak Angka PAYUNGDEV</h1>
+                <p class="game-subtitle">Uji keberuntungan dan logika Anda dalam menebak angka rahasia!</p>
+            </section>
+
+            <div class="game-layout">
+                <section class="game-controls animated-card">
+                    <div class="game-info">
+                        <div class="info-card">
+                            <h3><i class="fas fa-bullseye"></i> Target</h3>
+                            <p class="target-number">?</p>
+                            <p class="target-label">Angka Rahasia</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-tachometer-alt"></i> Level</h3>
+                            <p class="level-number" id="current-level">1</p>
+                            <p class="level-label">Dari 5</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-star"></i> Skor</h3>
+                            <p class="score-number" id="current-score">0</p>
+                            <p class="score-label">Poin</p>
+                        </div>
+                        <div class="info-card">
+                            <h3><i class="fas fa-history"></i> Percobaan</h3>
+                            <p class="attempt-number" id="attempts-left">10</p>
+                            <p class="attempt-label">Tersisa</p>
+                        </div>
+                    </div>
+
+                    <div class="game-config">
+                        <div class="range-display">
+                            <span class="range-label">Rentang Angka:</span>
+                            <span class="range-value" id="range-display">1 - 100</span>
+                        </div>
+
+                        <div class="difficulty-selector">
+                            <h3><i class="fas fa-sliders-h"></i> Tingkat Kesulitan</h3>
+                            <div class="difficulty-buttons">
+                                <button class="difficulty-btn active" data-level="easy">
+                                    <i class="fas fa-umbrella"></i> Mudah
+                                </button>
+                                <button class="difficulty-btn" data-level="medium">
+                                    <i class="fas fa-cloud"></i> Sedang
+                                </button>
+                                <button class="difficulty-btn" data-level="hard">
+                                    <i class="fas fa-bolt"></i> Sulit
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label for="guess-input">
+                                    <i class="fas fa-keyboard"></i> Masukkan Tebakan:
+                                </label>
+                                <div class="input-with-button">
+                                    <input type="number" id="guess-input" min="1" max="100"
+                                        placeholder="Masukkan angka..." autofocus>
+                                    <button id="guess-btn" class="guess-button">
+                                        <i class="fas fa-paper-plane"></i> Tebak!
+                                    </button>
+                                </div>
+                                <div class="input-hint">
+                                    Tekan <span class="key-hint">Enter</span> untuk mengirim tebakan
+                                </div>
+                            </div>
+
+                            <div class="number-pad">
+                                <h4><i class="fas fa-th-large"></i> Keypad Cepat</h4>
+                                <div class="number-grid">
+                                    <!-- Angka akan di-generate oleh JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="game-feedback animated-card">
+                    <h2><i class="fas fa-comments"></i> Feedback</h2>
+                    <div class="feedback-container">
+                        <div class="feedback-message" id="feedback-text">
+                            <p>Selamat datang! Silakan tebak angka antara 1 sampai 100. Anda memiliki 10 kesempatan.</p>
+                        </div>
+
+                        <div class="guess-history">
+                            <h3><i class="fas fa-history"></i> Riwayat Tebakan</h3>
+                            <div class="history-list" id="guess-history">
+                                <!-- Riwayat tebakan akan muncul di sini -->
+                                <div class="empty-history">
+                                    <i class="fas fa-clock"></i>
+                                    <p>Belum ada tebakan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-hint">
+                        <div class="hint-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="hint-content">
+                            <h4>Tips Bermain:</h4>
+                            <p>Gunakan metode binary search: selalu tebak di tengah rentang kemungkinan untuk hasil
+                                tercepat!</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="game-visualization animated-card">
+                    <h2><i class="fas fa-chart-bar"></i> Visualisasi Tebakan</h2>
+                    <div class="visualization-container">
+                        <div class="range-bar">
+                            <div class="range-min" id="range-min">1</div>
+                            <div class="range-slider">
+                                <div class="range-fill" id="range-fill"></div>
+                                <div class="current-guess-marker" id="guess-marker"></div>
+                                <div class="target-marker" id="target-marker"></div>
+                            </div>
+                            <div class="range-max" id="range-max">100</div>
+                        </div>
+
+                        <div class="guess-indicator">
+                            <div class="indicator-item">
+                                <div class="indicator-color target"></div>
+                                <span>Angka Target</span>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-color guess"></div>
+                                <span>Tebakan Terakhir</span>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-color range"></div>
+                                <span>Rentang Mungkin</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="game-progress">
+                        <h3><i class="fas fa-tasks"></i> Progress Level</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="level-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="level-indicators">
+                            <div class="level-indicator active">1</div>
+                            <div class="level-indicator">2</div>
+                            <div class="level-indicator">3</div>
+                            <div class="level-indicator">4</div>
+                            <div class="level-indicator">5</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="game-actions animated-card">
+                    <h2><i class="fas fa-cogs"></i> Kontrol Game</h2>
+                    <div class="action-buttons">
+                        <button id="new-game-btn" class="action-btn primary">
+                            <i class="fas fa-play-circle"></i> Game Baru
+                        </button>
+                        <button id="hint-btn" class="action-btn secondary">
+                            <i class="fas fa-question-circle"></i> Dapatkan Petunjuk
+                        </button>
+                        <button id="reset-btn" class="action-btn warning">
+                            <i class="fas fa-redo"></i> Reset Level
+                        </button>
+                        <button id="sound-toggle" class="action-btn sound-btn">
+                            <i class="fas fa-volume-up"></i> Suara: ON
+                        </button>
+                    </div>
+
+                    <div class="achievements">
+                        <h3><i class="fas fa-trophy"></i> Pencapaian</h3>
+                        <div class="achievement-list">
+                            <div class="achievement-item locked">
+                                <i class="fas fa-star"></i>
+                                <span>Pemula (Level 1)</span>
+                            </div>
+                            <div class="achievement-item locked">
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>Menengah (Level 3)</span>
+                            </div>
+                            <div class="achievement-item locked">
+                                <i class="fas fa-crown"></i>
+                                <span>Master (Level 5)</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="game-instructions animated-card">
+                <h2><i class="fas fa-info-circle"></i> Cara Bermain</h2>
+                <div class="instructions-grid">
+                    <div class="instruction-card">
+                        <div class="instruction-number">1</div>
+                        <h3>Tebak Angka</h3>
+                        <p>Masukkan angka antara 1-100 atau gunakan keypad di layar. Tekan "Tebak!" atau Enter untuk
+                            mengirim.</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">2</div>
+                        <h3>Dapatkan Petunjuk</h3>
+                        <p>Sistem akan memberi tahu apakah tebakan Anda terlalu tinggi, terlalu rendah, atau tepat!</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">3</div>
+                        <h3>Persempit Rentang</h3>
+                        <p>Gunakan feedback untuk memperkecil rentang angka yang mungkin. Setiap tebakan membuat rentang
+                            lebih kecil.</p>
+                    </div>
+                    <div class="instruction-card">
+                        <div class="instruction-number">4</div>
+                        <h3>Lanjut Level</h3>
+                        <p>Tebak dengan benar untuk naik level. Semakin tinggi level, semakin sulit tantangannya!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-umbrella"></i>
+                    <span>PAYUNG<span class="dev">DEV</span></span>
+                </div>
+                <p class="footer-text">
+                    "Game sederhana untuk istirahat sejenak dari coding"
+                </p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="biodata.html">Biodata</a>
+                    <a href="game.html">Game</a>
+                    <a href="https://github.com/alvithops" target="_blank">GitHub</a>
+                </div>
+                <p class="copyright">
+                    &copy; <span id="current-year"></span> PAYUNGDEV Game. Dibuat dengan HTML, CSS & JS.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal untuk menang/kalah -->
+    <div class="modal" id="result-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Selamat!</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon" id="modal-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <p id="modal-message">Anda berhasil menebak angka dengan benar!</p>
+                <div class="modal-stats">
+                    <div class="modal-stat">
+                        <span class="stat-label">Level</span>
+                        <span class="stat-value" id="modal-level">1</span>
+                    </div>
+                    <div class="modal-stat">
+                        <span class="stat-label">Skor</span>
+                        <span class="stat-value" id="modal-score">0</span>
+                    </div>
+                    <div class="modal-stat">
+                        <span class="stat-label">Sisa Percobaan</span>
+                        <span class="stat-value" id="modal-attempts">5</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-next" class="modal-btn primary">Level Berikutnya</button>
+                <button id="modal-restart" class="modal-btn secondary">Main Lagi</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

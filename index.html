@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYUNGDEV - Profil Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/umbrella.png">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Background Animasi -->
+        <div class="bg-animation">
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="rain-drop"></div>
+            <div class="umbrella-float">
+                <i class="fas fa-umbrella"></i>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-umbrella"></i>
+                <span>PAYUNG<span class="dev">DEV</span></span>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="biodata.html">Biodata</a>
+                <a href="game.html">Game</a>
+                <a href="https://github.com/alvithops" target="_blank">GitHub</a>
+            </nav>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="hero-section">
+                <div class="hero-content animated-card">
+                    <h1 class="hero-title">
+                        <span class="greeting">Halo, saya</span>
+                        <span class="name">Alvito Hadyan P Sutrisno</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Full-Stack Developer & Tech Enthusiast
+                    </p>
+                    <p class="hero-desc">
+                        Selamat datang di profil PAYUNGDEV! Saya seorang developer yang bersemangat dalam menciptakan
+                        solusi digital kreatif dan inovatif.
+                        Saya suka mengembangkan proyek yang bermanfaat dan terus belajar teknologi terbaru.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="biodata.html" class="btn btn-primary">
+                            <i class="fas fa-user"></i> Lihat Biodata
+                        </a>
+                        <a href="game.html" class="btn btn-secondary">
+                            <i class="fas fa-gamepad"></i> Mainkan Game
+                        </a>
+                        <a href="https://github.com/alvithops" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-github"></i> GitHub Saya
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="window-title">profile.js</span>
+                        </div>
+                        <div class="window-content">
+                            <pre><code class="javascript">
+// PAYUNGDEV Profile
+const developer = {
+    name: "Alvito Hadyan P Sutrisno",
+    role: "Full-Stack Developer",
+    skills: [
+        "JavaScript", "React", "Node.js",
+        "Python", "PHP", "Database",
+        "UI/UX", "Mobile Dev"
+    ],
+    passion: "Creating useful digital solutions",
+    motto: "Code with purpose, develop with passion"
+};
+
+// Always learning
+function keepGrowing() {
+    while(true) {
+        learnNewTech();
+        buildProjects();
+        shareKnowledge();
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <h2 class="section-title">Apa yang bisa Anda temukan di sini?</h2>
+                <div class="features-grid">
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3>Biodata Interaktif</h3>
+                        <p>Profil lengkap dengan animasi menarik, informasi keahlian, pengalaman, dan portofolio proyek.
+                        </p>
+                        <a href="biodata.html" class="feature-link">Lihat Biodata →</a>
+                    </div>
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Game Sederhana</h3>
+                        <p>Tebak angka dengan antarmuka interaktif, cocok untuk menghilangkan penat saat coding.</p>
+                        <a href="game.html" class="feature-link">Mainkan Game →</a>
+                    </div>
+                    <div class="feature-card animated-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Proyek Open Source</h3>
+                        <p>Berbagai proyek coding yang saya kembangkan dan tersedia di GitHub repository.</p>
+                        <a href="https://github.com/alvithops" target="_blank" class="feature-link">Lihat Proyek →</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="github-stats animated-card">
+                <h2 class="section-title">Aktivitas GitHub</h2>
+                <div class="stats-container">
+                    <div class="stat">
+                        <i class="fab fa-github"></i>
+                        <div class="stat-info">
+                            <h3>Repository</h3>
+                            <p class="stat-number" id="repo-count">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <div class="stat-info">
+                            <h3>Stars</h3>
+                            <p class="stat-number" id="star-count">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-code-branch"></i>
+                        <div class="stat-info">
+                            <h3>Followers</h3>
+                            <p class="stat-number" id="follower-count">Loading...</p>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="stat-info">
+                            <h3>Bergabung</h3>
+                            <p class="stat-number" id="join-date">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-umbrella"></i>
+                    <span>PAYUNG<span class="dev">DEV</span></span>
+                </div>
+                <p class="footer-text">
+                    Dibuat dengan <i class="fas fa-heart" style="color: #e74c3c;"></i> oleh Alvito Hadyan P Sutrisno
+                </p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="biodata.html">Biodata</a>
+                    <a href="game.html">Game</a>
+                    <a href="https://github.com/alvithops" target="_blank">GitHub</a>
+                    <a href="https://linkedin.com/in/alvito-hadyan" target="_blank">LinkedIn</a>
+                </div>
+                <p class="copyright">
+                    &copy; <span id="current-year"></span> PAYUNGDEV. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
